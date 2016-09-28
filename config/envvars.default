@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# Contain Environment variables for installs
+#
+
+# VM IP
+VM_HOST='192.168.42.5'
+VM_NAME='fedora-stack-prod'
+
+
+# Ouroboros
+OUROBOROS_HOME='/opt/ouroboros'
+OUROBOROS_PORT='5004'
+
+
+# SQL
+SQL_PASSWORD='mybadpassword'
+SOLR_VERSION=4.1.0
+SOLR_HOME=/var/lib/tomcat7/webapps/solr4
+# CHANGE to solr4.xml when in PROD
+SOLR_CATALINA_CONFIG='solr4-temp.xml'
+
+
+# FEDORA
+FEDORA_HOST='127.0.0.1'
+FEDORA_MYSQL_USERNAME='fedoraAdmin'
+FEDORA_MYSQL_PASSWORD='fedorapassword'
+
+# administrator
+FEDORA_ADMIN_USERNAME='fedoraAdmin'
+FEDORA_ADMIN_PASSWORD='fedorapassword'
+
+# metadata
+FEDORA_METADATA_USERNAME='fedoraMetadata'
+FEDORA_METADATA_PASSWORD='fedorapassword_metadata'
+
+# view (API-A)
+FEDORA_VIEW_USERNAME='fedoraView'
+FEDORA_VIEW_PASSWORD='fedorapassword_view'
+
+
+# server hosts
+FEDORA_STACK_WORKDEV_HOST='192.168.42.4'
+FEDORA_STACK_STORAGE_HOST='192.168.42.6'
+
