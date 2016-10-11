@@ -33,7 +33,7 @@ cd ouroboros
 ####################################
 # DEBUG REMOVE
 ####################################
-git checkout ldaplogin
+# git checkout ldaplogin
 ####################################
 
 # fire ouroboros_assets
