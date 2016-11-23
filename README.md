@@ -5,7 +5,6 @@ fedora-stack-prod
   ```
   git clone https://github.com/WSULib/fedora-stack-prod.git
   cd fedora-stack-prod
-  unzip downloads.zip
   vagrant up
   ```
 
@@ -15,7 +14,6 @@ fedora-stack-prod
   (if needed) sudo apt-get -y install git
   git clone https://github.com/WSULib/fedora-stack-prod.git
   cd fedora-stack-prod
-  unzip downloads.zip
   Create config/envvars file from config/envvars.default (fill in necessary values)
   Running as root, run ./bash_install.sh
   Supply the appropriate password when prompted
