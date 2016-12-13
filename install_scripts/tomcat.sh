@@ -42,7 +42,7 @@ perl -i -0777 -pe 's/\s*<!--\s*\n(.*?port="8009".*?)\n\s*-->/\n$1/' /etc/tomcat7
 
 # Up max and perm size memory allocated to Tomcat
 touch /usr/share/tomcat7/bin/setenv.sh
-{ echo "JAVA_OPTS='$JAVA_OPTS -server -XX:+UseParallelGC -Xms1g -Xmx1g -XX:+DisableExplicitGC -XX:SurvivorRatio=10 -XX:TargetSurvivorRatio=90 -verbose:gc -Xloggc:/var/log/tomcat7/ggc.log -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintHeapAtGC'"; echo "export JAVA_OPTS"; } >> /usr/share/tomcat7/bin/setenv.sh
+{ echo "JAVA_OPTS='$JAVA_OPTS -Xms512m -Xmx2048m'"; echo "export JAVA_OPTS"; } >> /usr/share/tomcat7/bin/setenv.sh
 chmod +x /usr/share/tomcat7/bin/setenv.sh
 
 # restart tomcat
