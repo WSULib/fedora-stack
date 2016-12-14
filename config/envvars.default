@@ -7,11 +7,17 @@
 VM_HOST='192.168.42.5'
 VM_NAME='fedora-stack-prod'
 
+# global branch name to build from for components of the system
+# Includes
+#	branch of fedora-stack-downloads
+#	Ouroboros
+#	Digital Collections front-end
+BUILD_GLOBAL_GIT_BRANCH='master'
 
 # Ouroboros
 OUROBOROS_HOME='/opt/ouroboros'
 OUROBOROS_PORT='5004'
-
+WSUDOR_API_PREFIX='api'
 
 # SQL
 SQL_PASSWORD='mybadpassword'
@@ -19,7 +25,6 @@ SOLR_VERSION=4.1.0
 SOLR_HOME=/var/lib/tomcat7/webapps/solr4
 # CHANGE to solr4.xml when in PROD
 SOLR_CATALINA_CONFIG='solr4-temp.xml'
-
 
 # FEDORA
 FEDORA_HOST='127.0.0.1'
@@ -38,8 +43,4 @@ FEDORA_METADATA_PASSWORD='fedorapassword_metadata'
 FEDORA_VIEW_USERNAME='fedoraView'
 FEDORA_VIEW_PASSWORD='fedorapassword_view'
 
-
-# server hosts
-FEDORA_STACK_WORKDEV_HOST='192.168.42.4'
-FEDORA_STACK_STORAGE_HOST='192.168.42.6'
 

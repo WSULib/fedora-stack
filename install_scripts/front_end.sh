@@ -26,6 +26,8 @@ service apache2 restart
 # pull in digital collections (mirador included)
 cd /var/www/wsuls
 git clone https://github.com/WSUlib/digitalcollections.git
+cd digitalcollections
+git checkout $BUILD_GLOBAL_GIT_BRANCH
 cp $SHARED_DIR/downloads/front_end/digitalcollections/* /var/www/wsuls/digitalcollections/config
 mv /var/www/wsuls/digitalcollections/config/privatekey.php /var/www/wsuls/digitalcollections/inc/recaptcha
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/config/*

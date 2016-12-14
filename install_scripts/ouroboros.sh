@@ -29,6 +29,7 @@ workon ouroboros
 cd /opt
 git clone https://github.com/WSULib/ouroboros.git
 cd ouroboros
+git checkout $BUILD_GLOBAL_GIT_BRANCH
 
 ####################################
 # DEBUG REMOVE
