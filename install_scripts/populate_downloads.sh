@@ -1,4 +1,5 @@
-# gets global branch name to pull from and pulls
+#!/bin/bash
+echo "---- Populating sensitive /downloads folder ------------------------------------------------"
 
 #### GET ENVARS #################################################
 SHARED_DIR=$1

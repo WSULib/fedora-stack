@@ -7,11 +7,8 @@
 VM_HOST='192.168.42.5'
 VM_NAME='fedora-stack-prod'
 
-# global branch name to build from for components of the system
-# Includes
-#	branch of fedora-stack-downloads
-#	Ouroboros
-#	Digital Collections front-end
+# all downstream repositories will checkout the branch below
+# e.g. downloads directory, Ouroboros, front-end
 BUILD_GLOBAL_GIT_BRANCH='master'
 
 # Ouroboros

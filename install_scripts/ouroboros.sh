@@ -31,12 +31,6 @@ git clone https://github.com/WSULib/ouroboros.git
 cd ouroboros
 git checkout $BUILD_GLOBAL_GIT_BRANCH
 
-####################################
-# DEBUG REMOVE
-####################################
-# git checkout ldaplogin
-####################################
-
 # fire ouroboros_assets
 git submodule update --init --recursive
 
