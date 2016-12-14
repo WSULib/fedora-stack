@@ -44,7 +44,8 @@ chown -R ouroboros:admin /var/log/readux
 
 # copy config and replace values
 cp $SHARED_DIR/downloads/readux/localsettings.py /opt/readux/readux/localsettings.py
-cp $SHARED_DIR/downloads/readux/settings.py /opt/readux/readux/settings.py
+# not copying settings.py anymore, using version from wsu_deplay branch in GitHub
+# cp $SHARED_DIR/downloads/readux/settings.py /opt/readux/readux/settings.py
 sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /opt/readux/readux/localsettings.py
 sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /opt/readux/readux/localsettings.py
 sed -i "s/VM_HOST/$VM_HOST/g" /opt/readux/readux/localsettings.py
