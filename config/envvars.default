@@ -7,14 +7,17 @@
 VM_HOST='192.168.42.5'
 VM_NAME='fedora-stack-prod'
 
-# all downstream repositories will checkout the branch below
-# e.g. downloads directory, Ouroboros, front-end
-BUILD_GLOBAL_GIT_BRANCH='master'
-
 # Ouroboros
 OUROBOROS_HOME='/opt/ouroboros'
 OUROBOROS_PORT='5004'
 WSUDOR_API_PREFIX='api'
+OUROBOROS_GIT_BUILD_BRANCH='master'
+
+# Digital Collections Front-End
+FRONT_END_GIT_BUILD_BRANCH='master'
+
+# Sensitive information, aka /downloads directory
+DOWNLOADS_GIT_BUILD_BRANCH='master'
 
 # SQL
 SQL_PASSWORD='mybadpassword'

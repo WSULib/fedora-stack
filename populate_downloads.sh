@@ -15,7 +15,5 @@ else
 fi
 #################################################################
 
-printf "\n\nChecking out branch: $BUILD_GLOBAL_GIT_BRANCH for fedora-stack-downloads\n\n"
-
-git submodule update --init --recursive
-git submodule foreach git pull origin $BUILD_GLOBAL_GIT_BRANCH
+printf "\n\nChecking out branch: $DOWNLOADS_GIT_BUILD_BRANCH for fedora-stack-downloads\n\n"
+git clone -b $DOWNLOADS_GIT_BUILD_BRANCH https://github.com/WSULib/fedora-stack-downloads.git downloads
