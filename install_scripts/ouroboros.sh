@@ -29,7 +29,7 @@ workon ouroboros
 cd /opt
 git clone https://github.com/WSULib/ouroboros.git
 cd ouroboros
-git checkout $BUILD_GLOBAL_GIT_BRANCH
+git checkout $OUROBOROS_GIT_BUILD_BRANCH
 
 # fire ouroboros_assets
 git submodule update --init --recursive
@@ -57,6 +57,7 @@ cp $SHARED_DIR/downloads/ouroboros/localConfig.py /opt/ouroboros/localConfig.py
 sed -i "s/APP_HOST_PLACEHOLDER/$VM_HOST/g" /opt/ouroboros/localConfig.py
 sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /opt/ouroboros/localConfig.py
 sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /opt/ouroboros/localConfig.py
+sed -i "s/OUROBOROS_API_PREFIX/$OUROBOROS_API_PREFIX/g" /opt/ouroboros/localConfig.py
 
 cd /opt
 

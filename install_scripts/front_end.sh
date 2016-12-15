@@ -27,7 +27,7 @@ service apache2 restart
 cd /var/www/wsuls
 git clone https://github.com/WSUlib/digitalcollections.git
 cd digitalcollections
-git checkout $BUILD_GLOBAL_GIT_BRANCH
+git checkout $FRONT_END_GIT_BUILD_BRANCH
 cp $SHARED_DIR/downloads/front_end/digitalcollections/* /var/www/wsuls/digitalcollections/config
 mv /var/www/wsuls/digitalcollections/config/privatekey.php /var/www/wsuls/digitalcollections/inc/recaptcha
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/config/*
@@ -40,6 +40,7 @@ chown -R www-data:www-data /var/www/wsuls/eTextReader
 cp $SHARED_DIR/downloads/front_end/eTextReader/config.js /var/www/wsuls/eTextReader/config
 cp $SHARED_DIR/downloads/front_end/eTextReader/config.php /var/www/wsuls/eTextReader/config
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/eTextReader/config/*
+sed -i "s/FRONT_END_API_PREFIX/$FRONT_END_API_PREFIX/g" /var/www/wsuls/eTextReader/config/*
 # sensitive
 cp $SHARED_DIR/downloads/front_end/eTextReader/sensitive.php /var/www/wsuls/eTextReader/php
 sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /var/www/wsuls/eTextReader/php/sensitive.php
