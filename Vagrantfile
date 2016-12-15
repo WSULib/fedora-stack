@@ -22,7 +22,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # sets shared dir that is passed to bootstrap
   shared_dir = "/vagrant"  
 
-  config.vm.provision "shell", path: "./install_scripts/populate_downloads.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/bootstrap.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/lamp.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/java.sh", args: shared_dir
