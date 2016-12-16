@@ -31,6 +31,7 @@ git checkout $FRONT_END_GIT_BUILD_BRANCH
 cp $SHARED_DIR/downloads/front_end/digitalcollections/* /var/www/wsuls/digitalcollections/config
 mv /var/www/wsuls/digitalcollections/config/privatekey.php /var/www/wsuls/digitalcollections/inc/recaptcha
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/config/*
+sed -i "s/FRONT_END_API_PREFIX/$FRONT_END_API_PREFIX/g" /var/www/wsuls/digitalcollections/config/*
 chown -R www-data:admin /var/www/wsuls/digitalcollections
 
 # pull in eTextReader
