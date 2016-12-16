@@ -37,6 +37,9 @@ printf "\n" | sudo pip install Pillow
 # clone repo and install
 cd /var/lib
 git clone https://github.com/WSULib/loris.git
+cd loris
+git checkout tags/v1.0
+cd ..
 
 # install
 echo "installing Loris"

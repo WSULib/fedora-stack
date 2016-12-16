@@ -26,6 +26,9 @@ service apache2 restart
 # pull in digital collections (mirador included)
 cd /var/www/wsuls
 git clone https://github.com/WSUlib/digitalcollections.git
+cd digitalcollections
+git checkout tags/v1.0
+cd ..
 cp $SHARED_DIR/downloads/front_end/digitalcollections/* /var/www/wsuls/digitalcollections/config
 mv /var/www/wsuls/digitalcollections/config/privatekey.php /var/www/wsuls/digitalcollections/inc/recaptcha
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/config/*
@@ -33,6 +36,9 @@ chown -R www-data:admin /var/www/wsuls/digitalcollections
 
 # pull in eTextReader
 git clone https://github.com/WSUlib/eTextReader.git
+cd eTextReader
+git checkout tags/v1.0
+cd ..
 chown -R www-data:www-data /var/www/wsuls/eTextReader
 # config
 cp $SHARED_DIR/downloads/front_end/eTextReader/config.js /var/www/wsuls/eTextReader/config

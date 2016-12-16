@@ -29,6 +29,7 @@ workon ouroboros
 cd /opt
 git clone https://github.com/WSULib/ouroboros.git
 cd ouroboros
+git checkout tags/v1.0
 
 ####################################
 # DEBUG REMOVE
