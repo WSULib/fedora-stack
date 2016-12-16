@@ -13,9 +13,11 @@ fedora-stack-prod
   # edit configuration
     # set host
     # VM name
-    # check or set git branch to checkout for a some downstream components (e.g. /dowloads directory, Ouroboros, front-end, etc.)
     # passwords for system
   vim ./config/envvars
+
+    # populate sensitive information, /downloads
+  ./prebuild.sh
   
   # finally, fire up VM
   vagrant up
@@ -33,9 +35,11 @@ fedora-stack-prod
   # edit configuration
     # set host
     # VM name
-    # check or set git branch to checkout for a some downstream components (e.g. /dowloads directory, Ouroboros, front-end, etc.)
     # passwords for system
   vim ./config/envvars
+
+  # populate sensitive information, /downloads
+  ./prebuild.sh
   
   # Run bash install (as root)
   ./bash_install.sh
