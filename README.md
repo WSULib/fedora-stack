@@ -13,7 +13,7 @@ fedora-stack-prod
   # edit configuration
     # set host
     # VM name
-    # set `BUILD_GLOBAL_GIT_BRANCH`, the branch for all downstream components to pull from (e.g. /dowloads directory, Ouroboros, front-end, etc.)
+    # check or set git branch to checkout for a some downstream components (e.g. /dowloads directory, Ouroboros, front-end, etc.)
     # passwords for system
   vim ./config/envvars
   
@@ -33,7 +33,7 @@ fedora-stack-prod
   # edit configuration
     # set host
     # VM name
-    # set `BUILD_GLOBAL_GIT_BRANCH`, the branch for all downstream components to pull from (e.g. /dowloads directory, Ouroboros, front-end, etc.)
+    # check or set git branch to checkout for a some downstream components (e.g. /dowloads directory, Ouroboros, front-end, etc.)
     # passwords for system
   vim ./config/envvars
   
