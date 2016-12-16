@@ -11,14 +11,14 @@ VM_NAME='fedora-stack-prod'
 OUROBOROS_HOME='/opt/ouroboros'
 OUROBOROS_PORT='5004'
 OUROBOROS_API_PREFIX='api'
-OUROBOROS_GIT_BUILD_BRANCH='master'
+OUROBOROS_GIT_BUILD_BRANCH='v1.5'
 
 # Digital Collections Front-End
 FRONT_END_API_PREFIX='api'
 FRONT_END_GIT_BUILD_BRANCH='master'
 
 # Sensitive information, aka /downloads directory
-DOWNLOADS_GIT_BUILD_BRANCH='master'
+DOWNLOADS_GIT_BUILD_BRANCH='v1.5'
 
 # SQL
 SQL_PASSWORD='mybadpassword'
