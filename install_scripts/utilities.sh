@@ -28,7 +28,6 @@ git clone https://github.com/WSULib/SWORD2DC.git
 git clone https://github.com/WSULib/digital-collections-sitemaps.git
 git clone https://github.com/WSULib/dc2Solr.git
 
-
 # Write cronjobs
 # crontab -l | { cat; echo "0 * * * * some_entry"; } | crontab -
 crontab -l | { cat; echo "# Downloads item records from DC, indexes in Solr"; } | crontab -

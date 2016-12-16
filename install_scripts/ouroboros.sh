@@ -30,6 +30,7 @@ cd /opt
 git clone https://github.com/WSULib/ouroboros.git
 cd ouroboros
 git checkout $OUROBOROS_GIT_BUILD_BRANCH
+cd ..
 
 # fire ouroboros_assets
 git submodule update --init --recursive

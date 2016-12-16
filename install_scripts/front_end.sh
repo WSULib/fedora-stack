@@ -28,6 +28,7 @@ cd /var/www/wsuls
 git clone https://github.com/WSUlib/digitalcollections.git
 cd digitalcollections
 git checkout $FRONT_END_GIT_BUILD_BRANCH
+cd ..
 cp $SHARED_DIR/downloads/front_end/digitalcollections/* /var/www/wsuls/digitalcollections/config
 mv /var/www/wsuls/digitalcollections/config/privatekey.php /var/www/wsuls/digitalcollections/inc/recaptcha
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/config/*
@@ -35,6 +36,7 @@ sed -i "s/FRONT_END_API_PREFIX/$FRONT_END_API_PREFIX/g" /var/www/wsuls/digitalco
 chown -R www-data:admin /var/www/wsuls/digitalcollections
 
 # pull in eTextReader
+cd /var/www/wsuls
 git clone https://github.com/WSUlib/eTextReader.git
 chown -R www-data:www-data /var/www/wsuls/eTextReader
 # config
@@ -49,10 +51,6 @@ sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /var/www/wsuls/eTextRe
 
 # chown
 chown -R www-data:admin /var/www/wsuls/eTextReader
-
-# index all documents in Fedora to Solr, specifically to power front-end
-# assumes Fedora, Solr, and Ouroboros are up and operational
-curl "http://$VM_HOST:$OUROBOROS_PORT/tasks/updateSolr/purgeAndFullIndex"
 
 # set robots and google site verification
 cp $SHARED_DIR/downloads/front_end/google288f165e0ae3f823.html /var/www/wsuls/
