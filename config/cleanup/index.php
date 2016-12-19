@@ -26,6 +26,12 @@
 			<li><a target="_blank" href="http://<?php echo $VM_HOST; ?>/solr4">Solr</a></li>
 			<li><a target="_blank" href="http://<?php echo $VM_HOST; ?>/ouroboros">Ouroboros</a></li>
 			<li><a target="_blank" href="http://<?php echo $VM_HOST; ?>/digitalcollections">Digital Collections Front-End</a></li>
+			<li>API (note: whatever default version is set in Ourobor's localConfig, will push to <code>/api</code>):
+				<ul>
+					<li><a href="/api/v1">v1</a></li>
+					<li><a href="/api/v2">v2</a></li>
+				</ul>
+			</li>
 		</ul>
 
 	</body>
