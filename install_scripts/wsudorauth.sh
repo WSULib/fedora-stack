@@ -29,6 +29,10 @@ cd wsudorauth
 # copy config and replace values
 cp $SHARED_DIR/downloads/wsudorauth/localsettings.py /opt/wsudorauth/wsudorauth/localsettings.py
 sed -i "s/VM_HOST/$VM_HOST/g" /opt/wsudorauth/wsudorauth/localsettings.py
+sed -i "s/WSUDORAUTH_DB_USERNAME/$WSUDORAUTH_DB_USERNAME/g" /opt/wsudorauth/wsudorauth/localsettings.py
+sed -i "s/WSUDORAUTH_DB_PASSWORD/$WSUDORAUTH_DB_PASSWORD/g" /opt/wsudorauth/wsudorauth/localsettings.py
+sed -i "s/WSUDORAUTH_DB_USERNAME/$WSUDORAUTH_DB_USERNAME/g" /opt/wsudorauth/wsudorauth/wsudorauth_mysql_db_create.sql
+sed -i "s/WSUDORAUTH_DB_PASSWORD/$WSUDORAUTH_DB_PASSWORD/g" /opt/wsudorauth/wsudorauth/wsudorauth_mysql_db_create.sql
 
 # install pip dependencies
 pip install -r requirements.txt

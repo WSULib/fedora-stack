@@ -44,4 +44,7 @@ FEDORA_METADATA_PASSWORD='fedorapassword_metadata'
 FEDORA_VIEW_USERNAME='fedoraView'
 FEDORA_VIEW_PASSWORD='fedorapassword_view'
 
+# WSUDORauth
+WSUDOR_AUTH_DB_USERNAME='wsudorauth'
+WSUDOR_AUTH_DB_PASSWORD='wsudorauth'
 
