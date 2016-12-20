@@ -44,6 +44,9 @@ mysql --user=root --password=$SQL_PASSWORD < /tmp/wsudorauth_mysql_db_create.sql
 # update db
 python manage.py migrate
 
+# collect static
+python manage.py collectstatic --noinput
+
 # chown
 chown -R ouroboros:admin /opt/wsudorauth
 
