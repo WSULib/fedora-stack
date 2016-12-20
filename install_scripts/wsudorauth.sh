@@ -50,7 +50,7 @@ python manage.py migrate
 chown -R ouroboros:admin /opt/wsudorauth
 
 # restart apache
-sudo chown -R :admin /usr/local/lib/venvs/wsudorauth
+sudo chown -R :admin /usr/local/lib/venvs/auth
 service apache2 restart
 
 # close
