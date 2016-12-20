@@ -36,7 +36,7 @@ sed -i "s/WSUDORAUTH_DB_PASSWORD/$WSUDORAUTH_DB_PASSWORD/g" /opt/wsudorauth/wsud
 pip install -r requirements.txt
 
 # create MySQL database, users, tables, then populate
-cp $SHARED_DIR/downloads/wsudorauth/localsettings.py /tmp
+cp $SHARED_DIR/downloads/wsudorauth/wsudorauth_mysql_db_create.sql /tmp
 sed -i "s/WSUDORAUTH_DB_USERNAME/$WSUDORAUTH_DB_USERNAME/g" /tmp/wsudorauth_mysql_db_create.sql
 sed -i "s/WSUDORAUTH_DB_PASSWORD/$WSUDORAUTH_DB_PASSWORD/g" /tmp/wsudorauth_mysql_db_create.sql
 mysql --user=root --password=$SQL_PASSWORD < /tmp/wsudorauth_mysql_db_create.sql
