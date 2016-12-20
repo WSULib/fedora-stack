@@ -26,6 +26,9 @@ cd /opt
 git clone https://github.com/WSULib/wsudorauth.git
 cd wsudorauth
 
+# install some dependendices
+apt-get -y install libmysqlclient-dev
+
 # copy config and replace values
 cp $SHARED_DIR/downloads/wsudorauth/localsettings.py /opt/wsudorauth/wsudorauth/localsettings.py
 sed -i "s/VM_HOST/$VM_HOST/g" /opt/wsudorauth/wsudorauth/localsettings.py
