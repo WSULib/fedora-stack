@@ -31,14 +31,15 @@ cp $SHARED_DIR/downloads/wsudorauth/localsettings.py /opt/wsudorauth/wsudorauth/
 sed -i "s/VM_HOST/$VM_HOST/g" /opt/wsudorauth/wsudorauth/localsettings.py
 sed -i "s/WSUDORAUTH_DB_USERNAME/$WSUDORAUTH_DB_USERNAME/g" /opt/wsudorauth/wsudorauth/localsettings.py
 sed -i "s/WSUDORAUTH_DB_PASSWORD/$WSUDORAUTH_DB_PASSWORD/g" /opt/wsudorauth/wsudorauth/localsettings.py
-sed -i "s/WSUDORAUTH_DB_USERNAME/$WSUDORAUTH_DB_USERNAME/g" /opt/wsudorauth/wsudorauth/wsudorauth_mysql_db_create.sql
-sed -i "s/WSUDORAUTH_DB_PASSWORD/$WSUDORAUTH_DB_PASSWORD/g" /opt/wsudorauth/wsudorauth/wsudorauth_mysql_db_create.sql
 
 # install pip dependencies
 pip install -r requirements.txt
 
 # create MySQL database, users, tables, then populate
-mysql --user=root --password=$SQL_PASSWORD < $SHARED_DIR/downloads/wsudorauth/wsudorauth_mysql_db_create.sql
+cp $SHARED_DIR/downloads/wsudorauth/localsettings.py /tmp
+sed -i "s/WSUDORAUTH_DB_USERNAME/$WSUDORAUTH_DB_USERNAME/g" /tmp/wsudorauth_mysql_db_create.sql
+sed -i "s/WSUDORAUTH_DB_PASSWORD/$WSUDORAUTH_DB_PASSWORD/g" /tmp/wsudorauth_mysql_db_create.sql
+mysql --user=root --password=$SQL_PASSWORD < /tmp/wsudorauth_mysql_db_create.sql
 
 # update db
 python manage.py migrate
