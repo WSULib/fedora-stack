@@ -30,9 +30,9 @@ cd digitalcollections
 git checkout $FRONT_END_GIT_BUILD_BRANCH
 ./provision.sh
 chown -R ouroboros:admin ~/.composer
+chown -R ouroboros:admin /var/www/wsuls/digitalcollections
 touch /var/www/wsuls/digitalcollections/logs/app.log
 chown www-data /var/www/wsuls/digitalcollections/logs/app.log
-chown -R ouroboros:admin /var/www/wsuls/digitalcollections
 
 # pull in eTextReader
 cd /var/www/wsuls
