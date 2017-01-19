@@ -29,6 +29,7 @@ git clone https://github.com/WSUlib/digitalcollections.git
 cd digitalcollections
 git checkout $FRONT_END_GIT_BUILD_BRANCH
 ./provision.sh
+cp $SHARED_DIR/downloads/front_end/digitalcollections/settings.php /var/www/wsuls/digitalcollections/src
 chown -R ouroboros:admin ~/.composer
 chown -R ouroboros:admin /var/www/wsuls/digitalcollections
 touch /var/www/wsuls/digitalcollections/logs/app.log
