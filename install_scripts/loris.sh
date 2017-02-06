@@ -35,12 +35,12 @@ libapache2-mod-wsgi
 printf "\n" | sudo pip install Pillow
 
 # clone repo and install
+echo "installing Loris"
 cd /var/lib
 git clone https://github.com/WSULib/loris.git
-
-# install
-echo "installing Loris"
 cd loris
+# checkout v2 branch
+git checkout wsu_v2.0
 # set upstream
 git remote add upstream https://github.com/loris-imageserver/loris
 python setup.py install --verbose --config-dir=/etc/loris2 --log-dir=/var/log/loris2 --www-dir=/opt/loris2 --kdu-expand=/usr/local/bin/kdu_expand --libkdu=/usr/local/lib  --info-cache=/var/cache/loris2 --image-cache=/var/cache/loris2
@@ -66,8 +66,10 @@ deactivate
 # cache management script as cron job
 # Uses custom cache cleaning script with hardcoded directories and 5gb limit
 cp $SHARED_DIR/downloads/loris/loris-http_cache_clean.sh /var/lib/loris/bin/loris-http_cache_clean.sh
-printf "setting cache clean cronjob"
+cp $SHARED_DIR/downloads/loris/loris-cache_clean.sh /var/lib/loris/bin/loris-cache_clean.sh
+printf "setting cache clean cronjobs"
 sudo -u loris -H sh -c '(crontab -l 2>/dev/null; echo "*/1 * * * * /var/lib/loris/bin/loris-http_cache_clean.sh") | crontab -'
+sudo -u loris -H sh -c '(crontab -l 2>/dev/null; echo "*/1 * * * * /var/lib/loris/bin/loris-cache_clean.sh") | crontab -'
 
 # chown dirs
 chown -R loris:admin /var/lib/loris
