@@ -44,6 +44,8 @@ cp $SHARED_DIR/downloads/front_end/eTextReader/config.js /var/www/wsuls/eTextRea
 cp $SHARED_DIR/downloads/front_end/eTextReader/config.php /var/www/wsuls/eTextReader/config
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/eTextReader/config/*
 sed -i "s/FRONT_END_API_PREFIX/$FRONT_END_API_PREFIX/g" /var/www/wsuls/eTextReader/config/*
+sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/src/settings.php
+sed -i "s/FRONT_END_API_PREFIX/$FRONT_END_API_PREFIX/g" /var/www/wsuls/digitalcollections/src/settings.php
 # sensitive
 cp $SHARED_DIR/downloads/front_end/eTextReader/sensitive.php /var/www/wsuls/eTextReader/php
 sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /var/www/wsuls/eTextReader/php/sensitive.php
