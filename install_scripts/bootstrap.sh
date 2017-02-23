@@ -27,6 +27,11 @@ groupadd admin
 # Build tools
 apt-get -y install build-essential
 
+# Update Python version on system
+add-apt-repository ppa:fkrull/deadsnakes-python2.7
+apt-get -y update
+apt-get -y install python2.7
+
 # Python essentials
 apt-get -y install libxml2-dev libxslt1-dev python-dev python-setuptools
 
