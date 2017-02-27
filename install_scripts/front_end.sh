@@ -39,6 +39,8 @@ chown www-data /var/www/wsuls/digitalcollections/logs/app.log
 cd /var/www/wsuls
 git clone https://github.com/WSUlib/eTextReader.git
 chown -R www-data:www-data /var/www/wsuls/eTextReader
+cd eTextReader
+git checkout $FRONT_END_GIT_BUILD_BRANCH
 # config
 cp $SHARED_DIR/downloads/front_end/eTextReader/config.js /var/www/wsuls/eTextReader/config
 cp $SHARED_DIR/downloads/front_end/eTextReader/config.php /var/www/wsuls/eTextReader/config
@@ -53,6 +55,9 @@ sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /var/www/wsuls/eTextRe
 
 # chown
 chown -R www-data:admin /var/www/wsuls/eTextReader
+
+# move to public directory
+mv /var/www/wsuls/eTextReader /var/www/wsuls/digitalcollections/public
 
 # set robots and google site verification
 cp $SHARED_DIR/downloads/front_end/google288f165e0ae3f823.html /var/www/wsuls/
