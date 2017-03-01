@@ -60,9 +60,9 @@ chown -R www-data:admin /var/www/wsuls/eTextReader
 mv /var/www/wsuls/eTextReader /var/www/wsuls/digitalcollections/public
 
 # set robots and google site verification
+cd /var/www/wsuls
 cp $SHARED_DIR/downloads/front_end/google288f165e0ae3f823.html /var/www/wsuls/
 cp $SHARED_DIR/downloads/front_end/robots.txt /var/www/wsuls/
-
 chown root:root robots.txt google288f165e0ae3f823.html
 chmod 644 robots.txt google288f165e0ae3f823.html
 
