@@ -16,7 +16,7 @@ fi
 #################################################################
 
 # fix interactivity issue
-export DEBIAN_FRONTEND=noninteractive
+export DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
 
 # Update
 apt-get -y update && apt-get -y upgrade
