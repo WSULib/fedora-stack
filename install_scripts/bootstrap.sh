@@ -15,6 +15,9 @@ else
 fi
 #################################################################
 
+# fix interactivity issue
+export DEBIAN_FRONTEND=noninteractive
+
 # Update
 apt-get -y update && apt-get -y upgrade
 
@@ -27,10 +30,13 @@ groupadd admin
 # Build tools
 apt-get -y install build-essential
 
+# unzip
+apt-get -y install unzip
+
 # Update Python version on system
-add-apt-repository ppa:fkrull/deadsnakes-python2.7
-apt-get -y update
-apt-get -y install python2.7
+# add-apt-repository ppa:fkrull/deadsnakes-python2.7
+# apt-get -y update
+# apt-get -y install python2.7
 
 # Python essentials
 apt-get -y install libxml2-dev libxslt1-dev python-dev python-setuptools
