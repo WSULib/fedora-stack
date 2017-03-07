@@ -40,7 +40,7 @@ chown -R www-data:www-data /usr/lib/cgi-bin
 
 # install system dependencies
 apt-get -y install libxml2-dev libxslt1-dev python-dev libldap2-dev libsasl2-dev libjpeg-dev pdftk imagemagick libreoffice-common
-apt-get -y build-dep python-mysqldb
+apt-get -y install libmysqlclient-dev
 
 # for python virtualenv
 pip install MySQL-python lxml
