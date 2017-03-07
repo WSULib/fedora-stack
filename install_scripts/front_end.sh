@@ -23,6 +23,10 @@ echo "extension=solr.so" > /etc/php/7.0/apache2/conf.d/solr.ini
 echo "extension=solr.so" > /etc/php/7.0/cli/conf.d/solr.ini
 service apache2 restart
 
+# Ensure PHP XML package for PHP7 is installed
+apt-get -y install php7.0-xml
+
+
 # pull in digital collections (mirador included)
 cd /var/www/wsuls
 git clone https://github.com/WSUlib/digitalcollections.git
