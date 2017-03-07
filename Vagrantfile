@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.hostname = "fedora-stack-prod"
 
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "bento/ubuntu-16.04"
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 4096 
