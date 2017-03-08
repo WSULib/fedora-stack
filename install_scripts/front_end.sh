@@ -15,14 +15,6 @@ else
 fi
 #################################################################
 
-# install pear, php-dev, and solr depencdencies for front-end
-apt-get -y install php5-dev php-pear libcurl4-gnutls-dev libpcre3-dev
-printf "\n" | pecl install -n solr
-echo "extension=solr.so" >> /etc/php/7.0/apache2/php.ini
-echo "extension=solr.so" > /etc/php/7.0/apache2/conf.d/solr.ini
-echo "extension=solr.so" > /etc/php/7.0/cli/conf.d/solr.ini
-service apache2 restart
-
 # Ensure PHP XML package for PHP7 is installed
 apt-get -y install php7.0-xml
 
