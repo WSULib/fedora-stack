@@ -4,8 +4,13 @@
 #
 
 # VM IP
-VM_HOST='192.168.42.5'
+# FOR DEVELOPMENT
+VM_HOST='digidev.library.wayne.edu'
 VM_NAME='fedora-stack-prod'
+
+# FOR PRODUCTION
+# VM_HOST='digital.library.wayne.edu'
+# VM_NAME='fedora-stack-prod'
 
 # Ouroboros
 OUROBOROS_HOME='/opt/ouroboros'

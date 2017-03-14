@@ -30,6 +30,8 @@ chown -R ouroboros:admin ~/.composer
 chown -R ouroboros:admin /var/www/wsuls/digitalcollections
 touch /var/www/wsuls/digitalcollections/logs/app.log
 chown www-data /var/www/wsuls/digitalcollections/logs/app.log
+sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/src/*
+
 
 # pull in eTextReader
 cd /var/www/wsuls
