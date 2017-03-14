@@ -52,9 +52,8 @@ service apache2 restart
 rm /etc/apache2/sites-available/000-default.conf
 cp -R $SHARED_DIR/downloads/apache2/sites-available/* /etc/apache2/sites-available
 sed -i "s/VM_HOST/$VM_HOST/g" /etc/apache2/sites-available/*
-sed -i "s/VM_HOST/$VM_HOST/g" /etc/apache2/sites-available/*
 sed -i "s/VM_HOST_PLACEHOLDER/$VM_HOST/g" /etc/apache2/sites-available/*
-sed -i "s/VM_NAME_PLACEHOLDER/$VM_NAME/g" /etc/apache2/sites-available/*
+sed -i "s/VM_CERT/$VM_CERT/g" /etc/apache2/sites-available/*
 sed -i "s/OUROBOROS_API_PREFIX_PLACEHOLDER/$OUROBOROS_API_PREFIX/g" /etc/apache2/sites-available/*
 
 # Copy SSL certs

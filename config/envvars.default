@@ -7,10 +7,12 @@
 # FOR DEVELOPMENT
 VM_HOST='digidev.library.wayne.edu'
 VM_NAME='fedora-stack-prod'
+VM_CERT='digidev_library_wayne_edu'
 
 # FOR PRODUCTION
 # VM_HOST='digital.library.wayne.edu'
 # VM_NAME='fedora-stack-prod'
+# VM_CERT='digital_library_wayne_edu'
 
 # Ouroboros
 OUROBOROS_HOME='/opt/ouroboros'
