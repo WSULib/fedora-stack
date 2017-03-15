@@ -51,9 +51,9 @@ service apache2 restart
 # Copy sites-available and find/replace env variables from envvars
 rm /etc/apache2/sites-available/000-default.conf
 cp -R $SHARED_DIR/downloads/apache2/sites-available/* /etc/apache2/sites-available
-sed -i "s/VM_HOST/$VM_HOST/g" /etc/apache2/sites-available/*
 sed -i "s/VM_HOST_PLACEHOLDER/$VM_HOST/g" /etc/apache2/sites-available/*
-sed -i "s/VM_CERT/$VM_CERT/g" /etc/apache2/sites-available/*
+sed -i "s/VM_NAME_PLACEHOLDER/$VM_NAME/g" /etc/apache2/sites-available/*
+sed -i "s/VM_CERT_PLACEHOLDER/$VM_CERT/g" /etc/apache2/sites-available/*
 sed -i "s/OUROBOROS_API_PREFIX_PLACEHOLDER/$OUROBOROS_API_PREFIX/g" /etc/apache2/sites-available/*
 
 # Copy SSL certs
@@ -62,12 +62,12 @@ cp -R $SHARED_DIR/downloads/apache2/certs /root/cert
 # Set IP addr and networking info
 # cp /vagrant/downloads/apache2/interfaces /etc/network/interfaces
 
-# Copy /etc/hosts file
-# cp /vagrant/downloads/apache2/hosts /etc/hosts
+# Modify /etc/hosts file
+echo -e "$VM_IP $VM_HOST\n$(cat /etc/hosts)" > /etc/hosts
 
 # Copy /etc/hostname file
 cp $SHARED_DIR/downloads/apache2/hostname /etc/hostname
-sed -i "s/VM_HOST/$VM_HOST/g" /etc/hostname
+sed -i "s/VM_HOST_PLACEHOLDER/$VM_HOST/g" /etc/hostname
 
 # Restart networking for hostname
 sudo service hostname restart

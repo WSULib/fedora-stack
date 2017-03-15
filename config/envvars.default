@@ -8,11 +8,13 @@
 VM_HOST='digidev.library.wayne.edu'
 VM_NAME='fedora-stack-prod'
 VM_CERT='digidev_library_wayne_edu'
+VM_IP='192.168.42.5'
 
 # FOR PRODUCTION
 # VM_HOST='digital.library.wayne.edu'
 # VM_NAME='fedora-stack-prod'
 # VM_CERT='digital_library_wayne_edu'
+# VM_IP='ADD YOUR IP HERE'
 
 # Ouroboros
 OUROBOROS_HOME='/opt/ouroboros'
