@@ -33,11 +33,9 @@ service apache2 restart
 a2enmod cache cgi cache_disk expires headers proxy proxy_ajp proxy_connect proxy_http reqtimeout rewrite ssl
 service apache2 restart
 
-# SSL configurations needed.
-# mem_cache (and probably disk_cache) now use cache_disk. I'm not installing fastcgi (which is deprecated for 14.04) until we track down what uses it.
 
 # set firewall rules
-# sudo iptables-restore < /vagrant/downloads/apache2/iptables.conf
+# already handled in prod builds
 
 # Copy ports.conf
 cp $SHARED_DIR/downloads/apache2/ports.conf /etc/apache2
@@ -58,9 +56,6 @@ sed -i "s/OUROBOROS_API_PREFIX_PLACEHOLDER/$OUROBOROS_API_PREFIX/g" /etc/apache2
 
 # Copy SSL certs
 cp -R $SHARED_DIR/downloads/apache2/certs /root/cert
-
-# Set IP addr and networking info
-# cp /vagrant/downloads/apache2/interfaces /etc/network/interfaces
 
 # Modify /etc/hosts file
 echo -e "$VM_IP $VM_HOST\n$(cat /etc/hosts)" > /etc/hosts
