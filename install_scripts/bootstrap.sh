@@ -79,7 +79,7 @@ apt-get -y install git vim
 apt-get -y install wget curl
 
 # FFmpeg
-sudo add-apt-repository -y ppa:mc3man/trusty-media
+sudo add-apt-repository -y ppa:mc3man/xerus-media
 sudo apt-get -y update
 sudo apt-get -y install ffmpeg
 
