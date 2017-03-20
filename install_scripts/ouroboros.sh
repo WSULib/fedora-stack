@@ -114,8 +114,8 @@ mkdir /var/www/wsuls/Ouroboros
 mkdir /var/www/wsuls/Ouroboros/export/
 chown -R ouroboros:admin /var/www/wsuls/Ouroboros
 
-mkdir /var/run/ouroboros
-chown -R ouroboros:admin /var/run/ouroboros
+# setup /etc/tmpfiles.d file for ouroboros
+echo "d /var/run/ouroboros 0775 ouroboros admin" > /etc/tmpfiles.d/ouroboros.conf
 
 # copy rc.local
 cp $SHARED_DIR/downloads/ouroboros/rc.local /etc
