@@ -10,9 +10,11 @@ fedora-stack-prod
   # create local configuration file from template
   mv ./config/envvars.default ./config/envvars
 
-  # edit configuration
+  # edit configuration (development is default; edit/uncomment in envvars to use production settings)
     # set host
     # VM name
+    # SSL cert file name
+    # VM IP address
     # passwords for system
   vim ./config/envvars
 
@@ -32,9 +34,11 @@ fedora-stack-prod
   # create local configuration file from template
   mv ./config/envvars.default ./config/envvars
 
-  # edit configuration
+  # edit configuration  (development is default; edit/uncomment in envvars to use production settings)
     # set host
     # VM name
+    # SSL cert file name
+    # VM IP address
     # passwords for system
   vim ./config/envvars
 
