@@ -30,6 +30,7 @@ echo "copying varnish config files"
 cp $SHARED_DIR/downloads/varnish/*.vcl /etc/varnish/
 cp $SHARED_DIR/downloads/varnish/varnish /etc/default/
 cp $SHARED_DIR/downloads/varnish/varnish_secret /etc/varnish/secret
+chown ouroboros:admin /etc/varnish/secret
 
 # set up configuration. Varnish does not seem to read /etc/default/varnish in Ubuntu 16.04
 sed -i "s/ExecStart=.*/ExecStart=\/usr\/sbin\/varnishd \-j unix,user=vcache \-F \-a \:6081 \-T localhost\:6082 \-f \/etc\/varnish\/default.vcl \-S \/etc\/varnish\/secret \-s file,\/var\/cache\/varnish\/,2g/" /lib/systemd/system/varnish.service
