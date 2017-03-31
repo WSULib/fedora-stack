@@ -31,9 +31,6 @@ chown -R ouroboros:admin /var/www/wsuls/digitalcollections
 touch /var/www/wsuls/digitalcollections/logs/app.log
 chown www-data /var/www/wsuls/digitalcollections/logs/app.log
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/src/settings.php
-sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/src/routes.php
-sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/src/middleware.php
-
 
 # pull in eTextReader
 cd /var/www/wsuls
