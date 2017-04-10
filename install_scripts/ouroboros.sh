@@ -128,6 +128,16 @@ cp $SHARED_DIR/config/ouroboros/ouroboros.conf /etc/supervisor/conf.d/
 supervisorctl reread
 supervisorctl update
 
+# install Jupyter notebook server
+pip install jupyter
+# copy supervisor and config files
+mkdir /home/ouroboros/.jupyter
+cp $SHARED_DIR/downloads/ouroboros/jupyter_notebook_config.py /home/ouroboros/.jupyter
+chown -R ouroboros:admin /home/ouroboros/.jupyter
+cp $SHARED_DIR/downloads/ouroboros/ouroboros_jupyter.conf /etc/supervisor/conf.d
+supervisorctl reread
+supervisorctl update
+
 ######### Extra Dependencies ##########################
 # dependencies for pillow
 sudo apt-get -y install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
