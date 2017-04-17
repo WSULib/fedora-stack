@@ -92,6 +92,15 @@ cd jpylyzer
 workon ouroboros
 python setup.py install
 
+# install WSU fork of pypremis
+cd /opt
+git clone https://github.com/WSULib/uchicagoldr-premiswork pypremis
+cd pypremis
+git checkout wsudor
+chown -R ouroboros:admin /opt/pypremis
+workon ouroboros
+python setup.py install
+
 # Finish Ouroboros configuration
 cd /opt/ouroboros
 # create MySQL database, users, tables, then populate
