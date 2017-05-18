@@ -123,6 +123,11 @@ mkdir /var/www/wsuls/Ouroboros
 mkdir /var/www/wsuls/Ouroboros/export/
 chown -R ouroboros:admin /var/www/wsuls/Ouroboros
 
+# fedora_binary symlinks
+mkdir /var/cache/ouroboros
+mkdir /var/cache/ouroboros/fedora_binary_symlinks
+chown -R ouroboros:admin /var/cache/ouroboros/fedora_binary_symlinks
+
 # create for first run
 mkdir /var/run/ouroboros
 chown -R ouroboros:admin /var/run/ouroboros
