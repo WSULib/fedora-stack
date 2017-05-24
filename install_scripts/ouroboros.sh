@@ -149,6 +149,7 @@ mkdir /home/ouroboros/.jupyter
 cp $SHARED_DIR/downloads/ouroboros/jupyter_notebook_config.py /home/ouroboros/.jupyter
 chown -R ouroboros:admin /home/ouroboros/.jupyter
 cp $SHARED_DIR/downloads/ouroboros/ouroboros_jupyter.conf /etc/supervisor/conf.d
+sed -i "s/VM_HOST/$VM_HOST/g" /etc/supervisor/conf.d/ouroboros_jupyter.conf
 supervisorctl reread
 supervisorctl update
 
