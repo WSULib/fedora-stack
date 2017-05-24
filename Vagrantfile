@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "./install_scripts/varnish.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/solr.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/fedora.sh", args: shared_dir
-  config.vm.provision "shell", path: "./install_scripts/oaiprovider.sh", args: shared_dir  
+  # config.vm.provision "shell", path: "./install_scripts/oaiprovider.sh", args: shared_dir # skipping install of oaiprovider
   config.vm.provision "shell", path: "./install_scripts/supervisor.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/kakadu.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/ouroboros.sh", args: shared_dir
@@ -39,7 +39,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "./install_scripts/loris.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/utilities.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/readux.sh", args: shared_dir
-  
   config.vm.provision "shell", path: "./install_scripts/cleanup.sh", args: shared_dir
 
 end
