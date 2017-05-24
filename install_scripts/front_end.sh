@@ -24,10 +24,9 @@ cd /var/www/wsuls
 git clone https://github.com/WSUlib/digitalcollections.git
 cd digitalcollections
 git checkout $FRONT_END_GIT_BUILD_BRANCH
+chown -R ouroboros:admin /var/www/wsuls/digitalcollections
 ./provision.sh
 cp $SHARED_DIR/downloads/front_end/digitalcollections/settings.php /var/www/wsuls/digitalcollections/src
-chown -R ouroboros:admin ~/.composer
-chown -R ouroboros:admin /var/www/wsuls/digitalcollections
 touch /var/www/wsuls/digitalcollections/logs/app.log
 chown www-data /var/www/wsuls/digitalcollections/logs/app.log
 sed -i "s/VM_HOST/$VM_HOST/g" /var/www/wsuls/digitalcollections/src/settings.php
