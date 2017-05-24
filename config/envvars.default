@@ -21,6 +21,7 @@ OUROBOROS_HOME='/opt/ouroboros'
 OUROBOROS_PORT='5004'
 OUROBOROS_API_PREFIX='api'
 OUROBOROS_GIT_BUILD_BRANCH='v2'
+OUROBOROS_LOCAL_PASSWORD='ouroborospassword'
 
 # Digital Collections Front-End
 FRONT_END_API_PREFIX='api'
