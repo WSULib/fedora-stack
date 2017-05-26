@@ -41,11 +41,12 @@ sed -i "s/WSUDORAUTH_DB_USERNAME/$WSUDORAUTH_DB_USERNAME/g" /tmp/wsudorauth_mysq
 sed -i "s/WSUDORAUTH_DB_PASSWORD/$WSUDORAUTH_DB_PASSWORD/g" /tmp/wsudorauth_mysql_db_create.sql
 mysql --user=root --password=$SQL_PASSWORD < /tmp/wsudorauth_mysql_db_create.sql
 
-# create local account
-echo "from django.contrib.auth.models import User; User.objects.create_superuser('ouroboros', 'libwebmaster@wayne.edu', '$OUROBOROS_LOCAL_PASSWORD')" | python /opt/wsudorauth/manage.py shell
-
 # update db
 python manage.py migrate
+
+# create local account
+echo "---CREATING local wsudorauth account---"
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('ouroboros', 'libwebmaster@wayne.edu', '$OUROBOROS_LOCAL_PASSWORD')" | python /opt/wsudorauth/manage.py shell
 
 # collect static
 python manage.py collectstatic --noinput
