@@ -128,6 +128,10 @@ mkdir /var/cache/ouroboros
 mkdir /var/cache/ouroboros/fedora_binary_symlinks
 chown -R ouroboros:admin /var/cache/ouroboros/fedora_binary_symlinks
 
+# LMDB location
+mkdir /var/cache/lmdb
+chown -R ouroboros:admin /var/cache/lmdb
+
 # create for first run
 mkdir /var/run/ouroboros
 chown -R ouroboros:admin /var/run/ouroboros
