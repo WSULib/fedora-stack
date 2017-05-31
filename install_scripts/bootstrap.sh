@@ -113,4 +113,4 @@ echo loris:password | chpasswd
 # Create ouroboros user
 useradd -m -s /bin/bash ouroboros
 usermod -g admin ouroboros
-echo ouroboros:ouroboros | chpasswd
+echo ouroboros:$OUROBOROS_USER_PASSWORD | chpasswd
