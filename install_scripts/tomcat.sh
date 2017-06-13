@@ -42,7 +42,7 @@ perl -i -0777 -pe 's/\s*<!--\s*\n(.*?port="8009".*?)\n\s*-->/\n$1/' /etc/tomcat7
 
 # Up max and perm size memory allocated to Tomcat
 touch /usr/share/tomcat7/bin/setenv.sh
-{ echo "JAVA_OPTS='$JAVA_OPTS -Xms512m -Xmx2048m'"; echo "export JAVA_OPTS"; } >> /usr/share/tomcat7/bin/setenv.sh
+{ echo "JAVA_OPTS='$JAVA_OPTS -Xms512m -Xmx2048m -Dcom.sun.management.jmxremote.port=8090 -Dcom.sun.management.jmxremote.rmi.port=8090 -Djava.rmi.server.hostname=127.0.0.1 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false'"; echo "export JAVA_OPTS"; } >> /usr/share/tomcat7/bin/setenv.sh
 chmod +x /usr/share/tomcat7/bin/setenv.sh
 
 # restart tomcat
