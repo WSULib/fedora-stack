@@ -10,7 +10,6 @@ if [ -f "$SHARED_DIR/config/envvars" ]; then
   printf "Found your local envvars file. Using it."
 
 else
-  . $SHARED_DIR/config/envvars.default
   printf "Could not find envvars - remember to copy /config/envvars.* (e.g. envvars.public) to /config/envvars.  Aborting."
   exit 1
 fi

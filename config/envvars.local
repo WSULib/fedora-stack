@@ -4,7 +4,7 @@
 # Profile: Local
 #
 
-BUILD_PROFILE = 'local'
+BUILD_PROFILE='local'
 
 # Server Info
 VM_HOST='digidev1.library.wayne.edu'
@@ -19,9 +19,9 @@ OUROBOROS_PORT='5004'
 OUROBOROS_API_PREFIX='api'
 OUROBOROS_GIT_BUILD_BRANCH='v2'
 OUROBOROS_LOCAL_PASSWORD='ouroborospassword'
-OUROBOROS_FEDCONSUMER_FIRE = 'False' # Public, Local and Dataslice are false, workdev is True
-OUROBOROS_REPOSITORY_NAME = 'local' # what Fedora repository to point to
-OUROBOROS_SCHEDULED_INDEXING = '#0 3 * * * curl "http://localhost/ouroboros/indexing/cron/modified"' # commented out in cron to NOT run
+OUROBOROS_FEDCONSUMER_FIRE='False' # Public, Local and Dataslice are false, workdev is True
+OUROBOROS_REPOSITORY_NAME='local' # what Fedora repository to point to
+OUROBOROS_SCHEDULED_INDEXING='#0 3 * * * curl "http://localhost/ouroboros/indexing/cron/modified"' # commented out in cron to NOT run
 
 # Digital Collections Front-End
 FRONT_END_API_PREFIX='api'
