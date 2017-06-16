@@ -51,6 +51,15 @@ echo "copying solr cores"
 cp -r $SHARED_DIR/downloads/solr/multicore $SOLR_HOME/
 cp -r $SHARED_DIR/downloads/solr/lib $SOLR_HOME/
 
+# make custom search component for fedobjs
+git clone https://github.com/WSULib/ItemMatch.git /tmp/ItemMatch
+JAVA_HOME=/usr/lib/jvm/java-8-oracle/
+mvn install -f /tmp/ItemMatch/
+cp /tmp/ItemMatch/target/*.jar $SOLR_HOME/lib/ItemMatch.jar
+chmod 755 $SOLR_HOME/lib/ItemMatch.jar
+rm -r /tmp/ItemMatch
+
+
 chown -hR tomcat7:tomcat7 $SOLR_HOME
 
 service tomcat7 start
