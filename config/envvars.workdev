@@ -21,14 +21,14 @@ OUROBOROS_GIT_BUILD_BRANCH='v2'
 OUROBOROS_LOCAL_PASSWORD='ouroborospassword'
 OUROBOROS_FEDCONSUMER_FIRE='True' # Public, Local and Dataslice are false, workdev is True
 OUROBOROS_REPOSITORY_NAME='remote' # what Fedora repository to point to (options: local/remote)
-OUROBOROS_SCHEDULED_INDEXING='#0 3 * * * curl "http://localhost/ouroboros/indexing/cron/modified"' # commented out in cron to NOT run
+OUROBOROS_SCHEDULED_INDEXING='#0 3 * * * curl http://localhost/ouroboros/indexing/cron/modified' # commented out in cron to NOT run
 
 # Digital Collections Front-End
 FRONT_END_API_PREFIX='api'
 FRONT_END_GIT_BUILD_BRANCH='v2'
 
 # Sensitive information, aka /downloads directory
-DOWNLOADS_GIT_BUILD_BRANCH='v2'
+DOWNLOADS_GIT_BUILD_BRANCH='v2buildprofiles'
 
 # SQL
 SQL_PASSWORD='mybadpassword'
