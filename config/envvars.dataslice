@@ -8,7 +8,7 @@ BUILD_PROFILE='dataslice'
 
 # Server Info
 VM_HOST='digidev.library.wayne.edu'
-VM_NAME='fedora-stack-prod'
+VM_NAME='fedora-stack-dataslice'
 VM_CERT='digidev_library_wayne_edu'
 VM_IP='192.168.42.5'
 
