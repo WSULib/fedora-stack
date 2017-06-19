@@ -7,11 +7,9 @@ SHARED_DIR=$1
 if [ -f "config/envvars" ]; then
   . config/envvars
   printf "found your local envvars file. Using it."
-
 else
-  . config/envvars.default
-  printf "found your default envvars file. Using its default values."
-
+  printf "Could not find envvars - remember to copy /config/envvars.* (e.g. envvars.public) to /config/envvars.  Aborting."
+  exit 1
 fi
 #################################################################
 
@@ -19,5 +17,10 @@ fi
 printf "\n\nChecking out branch: $DOWNLOADS_GIT_BUILD_BRANCH for fedora-stack-downloads\n\n"
 git clone -b $DOWNLOADS_GIT_BUILD_BRANCH https://github.com/WSULib/fedora-stack-downloads.git downloads
 
-# message to user
-printf "\n\nRemember to set your envvars file (copy envvars.default to envvars), noting which branch to checkout for Ouroboros and Front-End\n\n"
+# sed Vagrant file with information from envvars
+cp Vagrantfile.template Vagrantfile
+sed -i '.delete' "s/BUILD_PROFILE/$BUILD_PROFILE/g" Vagrantfile
+sed -i '.delete' "s/VM_IP/$VM_IP/g" Vagrantfile
+rm *.delete
+
+printf "\n\nPrebuild complete!  Remember, please do not add/commit the newly created Vagrantfile (extensionless).\n\n"

@@ -6,12 +6,32 @@ SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/config/envvars" ]; then
   . $SHARED_DIR/config/envvars
-  printf "found your local envvars file. Using it."
+  printf "Found your local envvars file. Using it."
 
 else
-  . $SHARED_DIR/config/envvars.default
-  printf "found your default envvars file. Using its default values."
+  printf "Could not find envvars - remember to copy /config/envvars.* (e.g. envvars.public) to /config/envvars.  Aborting."
+  exit 1
+fi
+#################################################################
 
+#################################################################
+# Check build profile, skip if not needed
+# comment out any profiles that DO need this provisioner, which will prevent skipping
+if [ -z ${BUILD_PROFILE+x} ]; then 
+	echo "BUILD_PROFILE environmental variable not found. Aborting.";
+	exit 1; 
+elif [ "$BUILD_PROFILE" == "dataslice" ]; then
+  	echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+  	exit 0;
+# elif [ "$BUILD_PROFILE" == "workdev" ]; then
+#   	echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+#   	exit 0;
+# elif [ "$BUILD_PROFILE" == "public" ]; then
+#   	echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+#   	exit 0;
+# elif [ "$BUILD_PROFILE" == "local" ]; then
+#   	echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+#   	exit 0;
 fi
 #################################################################
 
@@ -52,12 +72,16 @@ pip install -r requirements.txt
 # redis
 apt-get -y install redis-server
 
-# copy ouroboros's localConfig and replace host info
+# copy ouroboros's localConfig and sed values
 cp $SHARED_DIR/downloads/ouroboros/localConfig.py /opt/ouroboros/localConfig.py
 sed -i "s/APP_HOST_PLACEHOLDER/$VM_HOST/g" /opt/ouroboros/localConfig.py
-sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /opt/ouroboros/localConfig.py
-sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /opt/ouroboros/localConfig.py
+sed -i "s/BUILD_PROFILE/$BUILD_PROFILE/g" /opt/ouroboros/localConfig.py
 sed -i "s/OUROBOROS_API_PREFIX/$OUROBOROS_API_PREFIX/g" /opt/ouroboros/localConfig.py
+sed -i "s/OUROBOROS_FEDCONSUMER_FIRE/$OUROBOROS_FEDCONSUMER_FIRE/g" /opt/ouroboros/localConfig.py
+sed -i "s/OUROBOROS_REPOSITORY_NAME/$OUROBOROS_REPOSITORY_NAME/g" /opt/ouroboros/localConfig.py
+sed -i "s/REMOTE_HOST/$REMOTE_HOST/g" /opt/ouroboros/localConfig.py
+sed -i "s/REMOTE_FEDORA_USERNAME/$REMOTE_FEDORA_USERNAME/g" /opt/ouroboros/localConfig.py
+sed -i "s/REMOTE_FEDORA_PASSWORD/$REMOTE_FEDORA_PASSWORD/g" /opt/ouroboros/localConfig.py
 
 cd /opt
 
@@ -168,5 +192,11 @@ pip install --no-cache-dir pillow
 sudo chown -R :admin /usr/local/lib/venvs/ouroboros
 deactivate
 echo "deactivating virtualenv"
+
+# set cron job for autoindexing
+printf "setting autoindexing cron job: $OUROBOROS_SCHEDULED_INDEXING"
+crontab -l | { cat; echo "$OUROBOROS_SCHEDULED_INDEXING"; } | crontab -
+
+
 
 

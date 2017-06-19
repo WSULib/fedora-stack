@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+# Contain Environment variables for installs
+# Profile: Local
+#
+
+BUILD_PROFILE='local'
+
+# Server Info
+VM_HOST='digidev3.library.wayne.edu'
+VM_NAME='fedora-stack-local'
+VM_CERT='digidev_library_wayne_edu'
+VM_IP='192.168.42.8'
+
+# Ouroboros
+OUROBOROS_USER_PASSWORD='ouroboros'
+OUROBOROS_HOME='/opt/ouroboros'
+OUROBOROS_PORT='5004'
+OUROBOROS_API_PREFIX='api'
+OUROBOROS_GIT_BUILD_BRANCH='v2'
+OUROBOROS_LOCAL_PASSWORD='ouroborospassword'
+OUROBOROS_FEDCONSUMER_FIRE='False' # Public, Local and Dataslice are false, workdev is True
+OUROBOROS_REPOSITORY_NAME='local' # what Fedora repository to point to (options: local/remote)
+OUROBOROS_SCHEDULED_INDEXING='#0 3 * * * curl http://localhost/ouroboros/indexing/cron/modified' # commented out in cron to NOT run
+
+# Digital Collections Front-End
+FRONT_END_API_PREFIX='api'
+FRONT_END_GIT_BUILD_BRANCH='v2'
+
+# Sensitive information, aka /downloads directory
+DOWNLOADS_GIT_BUILD_BRANCH='v2'
+
+# SQL
+SQL_PASSWORD='mybadpassword'
+SOLR_VERSION=4.1.0
+SOLR_HOME=/var/lib/tomcat7/webapps/solr4
+# CHANGE to solr4.xml when in PROD
+SOLR_CATALINA_CONFIG='solr4-temp.xml'
+
+# local Fedora settings
+FEDORA_HOST='127.0.0.1'
+FEDORA_MYSQL_USERNAME='fedoraAdmin'
+FEDORA_MYSQL_PASSWORD='fedorapassword'
+
+# local fedora credentials
+# NOTE: used to make fedora-users
+LOCAL_FEDORA_ADMIN_USERNAME='fedoraAdmin'
+LOCAL_FEDORA_ADMIN_PASSWORD='fedorapassword'
+LOCAL_FEDORA_METADATA_USERNAME='fedoraMetadata'
+LOCAL_FEDORA_METADATA_PASSWORD='fedorapassword_metadata'
+LOCAL_FEDORA_VIEW_USERNAME='fedoraView'
+LOCAL_FEDORA_VIEW_PASSWORD='fedorapassword_view'
+
+# remote credentials
+# NOTE: these must match whatever fedora users have been created on the remote machine
+# NOTE: only one set of Fedora creds are needed, because usually only pointing to one, known remote fedora instance
+REMOTE_HOST='digidev.library.wayne.edu' # often, host for dataslice should go here
+REMOTE_FEDORA_USERNAME='fedoraView' # default for this profile is fedoraView, but can be changed post-build to admin
+REMOTE_FEDORA_PASSWORD='fedorapassword_view'
+
+# WSUDORauth
+WSUDORAUTH_DB_USERNAME='wsudorauth'
+WSUDORAUTH_DB_PASSWORD='wsudorauth'
+

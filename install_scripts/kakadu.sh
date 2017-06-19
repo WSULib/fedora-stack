@@ -6,14 +6,35 @@ SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/config/envvars" ]; then
   . $SHARED_DIR/config/envvars
-  printf "found your local envvars file. Using it."
+  printf "Found your local envvars file. Using it."
 
 else
-  . $SHARED_DIR/config/envvars.default
-  printf "found your default envvars file. Using its default values."
-
+  printf "Could not find envvars - remember to copy /config/envvars.* (e.g. envvars.public) to /config/envvars.  Aborting."
+  exit 1
 fi
 #################################################################
+
+#################################################################
+# Check build profile, skip if not needed
+# comment out any profiles that DO need this provisioner, which will prevent skipping
+if [ -z ${BUILD_PROFILE+x} ]; then 
+	echo "BUILD_PROFILE environmental variable not found. Aborting.";
+	exit 1; 
+elif [ "$BUILD_PROFILE" == "dataslice" ]; then
+  	echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+  	exit 0;
+# elif [ "$BUILD_PROFILE" == "workdev" ]; then
+#   	echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+#   	exit 0;
+# elif [ "$BUILD_PROFILE" == "public" ]; then
+#   	echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+#   	exit 0;
+# elif [ "$BUILD_PROFILE" == "local" ]; then
+#   	echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+#   	exit 0;
+fi
+#################################################################
+
 # retrieved from here: http://kakadusoftware.com/downloads/
 
 # dependencies

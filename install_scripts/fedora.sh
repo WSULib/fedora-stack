@@ -6,12 +6,32 @@ SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/config/envvars" ]; then
   . $SHARED_DIR/config/envvars
-  printf "found your local envvars file. Using it."
+  printf "Found your local envvars file. Using it."
 
 else
-  . $SHARED_DIR/config/envvars.default
-  printf "found your default envvars file. Using its default values."
+  printf "Could not find envvars - remember to copy /config/envvars.* (e.g. envvars.public) to /config/envvars.  Aborting."
+  exit 1
+fi
+#################################################################
 
+#################################################################
+# Check build profile, skip if not needed
+# comment out any profiles that DO need this provisioner, which will prevent skipping
+if [ -z ${BUILD_PROFILE+x} ]; then 
+  echo "BUILD_PROFILE environmental variable not found. Aborting.";
+  exit 1; 
+# elif [ "$BUILD_PROFILE" == "dataslice" ]; then
+#     echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+#     exit 0;
+elif [ "$BUILD_PROFILE" == "workdev" ]; then
+    echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+    exit 0;
+elif [ "$BUILD_PROFILE" == "public" ]; then
+    echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+    exit 0;
+# elif [ "$BUILD_PROFILE" == "local" ]; then
+#     echo "$BUILD_PROFILE does not require this provisioner, skipping..."
+#     exit 0;
 fi
 #################################################################
 
@@ -38,8 +58,8 @@ mysql --user=root --password=$SQL_PASSWORD < /tmp/fedora_mysql_db_create.sql
 
 # Installation (copy and sed in the install.properties)
 cp $SHARED_DIR/downloads/fedora/install.properties /tmp/install.properties
-sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /tmp/install.properties
-sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /tmp/install.properties
+sed -i "s/FEDORA_ADMIN_USERNAME/$LOCAL_FEDORA_ADMIN_USERNAME/g" /tmp/install.properties
+sed -i "s/FEDORA_ADMIN_PASSWORD/$LOCAL_FEDORA_ADMIN_PASSWORD/g" /tmp/install.properties
 sed -i "s/FEDORA_MYSQL_USERNAME/$FEDORA_MYSQL_USERNAME/g" /tmp/install.properties
 sed -i "s/FEDORA_MYSQL_PASSWORD/$FEDORA_MYSQL_PASSWORD/g" /tmp/install.properties
 java -jar $SHARED_DIR/downloads/fedora/fcrepo-installer-3.8.1.jar /tmp/install.properties
@@ -47,8 +67,8 @@ java -jar $SHARED_DIR/downloads/fedora/fcrepo-installer-3.8.1.jar /tmp/install.p
 # copy custom fedora.fcfg and replace values
 cp /opt/fedora/server/config/fedora.fcfg /opt/fedora/server/config/fedora.fcfg.BACKUP
 cp $SHARED_DIR/downloads/fedora/fedora.fcfg /opt/fedora/server/config
-sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /opt/fedora/server/config/fedora.fcfg
-sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /opt/fedora/server/config/fedora.fcfg
+sed -i "s/FEDORA_ADMIN_USERNAME/$LOCAL_FEDORA_ADMIN_USERNAME/g" /opt/fedora/server/config/fedora.fcfg
+sed -i "s/FEDORA_ADMIN_PASSWORD/$LOCAL_FEDORA_ADMIN_PASSWORD/g" /opt/fedora/server/config/fedora.fcfg
 sed -i "s/FEDORA_MYSQL_USERNAME/$FEDORA_MYSQL_USERNAME/g" /opt/fedora/server/config/fedora.fcfg
 sed -i "s/FEDORA_MYSQL_PASSWORD/$FEDORA_MYSQL_PASSWORD/g" /opt/fedora/server/config/fedora.fcfg
 sed -i "s/FEDORA_SERVER_HOST/$VM_HOST/g" /opt/fedora/server/config/fedora.fcfg
@@ -57,14 +77,14 @@ sed -i "s/FEDORA_SERVER_HOST/$VM_HOST/g" /opt/fedora/server/config/fedora.fcfg
 cp /opt/fedora/server/config/fedora-users.xml /opt/fedora/server/config/fedora-users.xml.BACKUP
 cp $SHARED_DIR/downloads/fedora/fedora-users.xml /opt/fedora/server/config
 # admin
-sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /opt/fedora/server/config/fedora-users.xml
-sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /opt/fedora/server/config/fedora-users.xml
+sed -i "s/FEDORA_ADMIN_USERNAME/$LOCAL_FEDORA_ADMIN_USERNAME/g" /opt/fedora/server/config/fedora-users.xml
+sed -i "s/FEDORA_ADMIN_PASSWORD/$LOCAL_FEDORA_ADMIN_PASSWORD/g" /opt/fedora/server/config/fedora-users.xml
 # metadata
-sed -i "s/FEDORA_METADATA_USERNAME/$FEDORA_METADATA_USERNAME/g" /opt/fedora/server/config/fedora-users.xml
-sed -i "s/FEDORA_METADATA_PASSWORD/$FEDORA_METADATA_PASSWORD/g" /opt/fedora/server/config/fedora-users.xml
+sed -i "s/FEDORA_METADATA_USERNAME/$LOCAL_FEDORA_METADATA_USERNAME/g" /opt/fedora/server/config/fedora-users.xml
+sed -i "s/FEDORA_METADATA_PASSWORD/$LOCAL_FEDORA_METADATA_PASSWORD/g" /opt/fedora/server/config/fedora-users.xml
 # view
-sed -i "s/FEDORA_VIEW_USERNAME/$FEDORA_VIEW_USERNAME/g" /opt/fedora/server/config/fedora-users.xml
-sed -i "s/FEDORA_VIEW_PASSWORD/$FEDORA_VIEW_PASSWORD/g" /opt/fedora/server/config/fedora-users.xml
+sed -i "s/FEDORA_VIEW_USERNAME/$LOCAL_FEDORA_VIEW_USERNAME/g" /opt/fedora/server/config/fedora-users.xml
+sed -i "s/FEDORA_VIEW_PASSWORD/$LOCAL_FEDORA_VIEW_PASSWORD/g" /opt/fedora/server/config/fedora-users.xml
 
 # chown fedora dir
 chown -R tomcat7:tomcat7 /opt/fedora
@@ -102,7 +122,7 @@ for f in $FILES
 do
   echo "Ingesting $f..."
   # take action on each file. $f store current file name
-  CMD="/opt/fedora/client/bin/fedora-ingest.sh f $f info:fedora/fedora-system:FOXML-1.1 localhost:8080 $FEDORA_ADMIN_USERNAME $FEDORA_ADMIN_PASSWORD http"
+  CMD="/opt/fedora/client/bin/fedora-ingest.sh f $f info:fedora/fedora-system:FOXML-1.1 localhost:8080 $LOCAL_FEDORA_ADMIN_USERNAME $LOCAL_FEDORA_ADMIN_PASSWORD http"
   echo $CMD
   $CMD
 done
@@ -113,7 +133,7 @@ for f in $FILES
 do
   echo "Ingesting $f..."
   # take action on each file. $f store current file name
-  CMD="/opt/fedora/client/bin/fedora-ingest.sh f $f info:fedora/fedora-system:FOXML-1.1 localhost:8080 $FEDORA_ADMIN_USERNAME $FEDORA_ADMIN_PASSWORD http"
+  CMD="/opt/fedora/client/bin/fedora-ingest.sh f $f info:fedora/fedora-system:FOXML-1.1 localhost:8080 $LOCAL_FEDORA_ADMIN_USERNAME $LOCAL_FEDORA_ADMIN_PASSWORD http"
   echo $CMD
   $CMD
 done

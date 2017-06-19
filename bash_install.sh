@@ -12,8 +12,8 @@ FILE=./config/envvars
 
 if [ ! -f "$FILE" ]
 then
-    echo "$FILE does not exist. Please consult ./config/envvars.default to build it." 1>&2
-    exit 1
+  printf "Could not find envvars - remember to copy /config/envvars.* (e.g. envvars.public) to /config/envvars.  Aborting."
+  exit 1
 fi
 #################################################################
 
@@ -30,11 +30,9 @@ printf $SHARED_DIR
 if [ -f "$SHARED_DIR/config/envvars" ]; then
   . $SHARED_DIR/config/envvars
   printf "found your local envvars file. Using it."
-
 else
-  . $SHARED_DIR/config/envvars.default
-  printf "found your default envvars file. Using its default values."
-
+  printf "Could not find envvars - remember to copy /config/envvars.* (e.g. envvars.public) to /config/envvars.  Aborting."
+  exit 1
 fi
 #################################################################
 
@@ -46,16 +44,16 @@ source $DIR/install_scripts/tomcat.sh
 source $DIR/install_scripts/varnish.sh
 source $DIR/install_scripts/solr.sh
 source $DIR/install_scripts/fedora.sh
-source $DIR/install_scripts/oaiprovider.sh
 source $DIR/install_scripts/supervisor.sh
 source $DIR/install_scripts/kakadu.sh
 source $DIR/install_scripts/rtail.sh
 source $DIR/install_scripts/ouroboros.sh
+source $DIR/install_scripts/wsudorauth.sh
 source $DIR/install_scripts/front_end.sh
 source $DIR/install_scripts/loris.sh
 source $DIR/install_scripts/utilities.sh
+source $DIR/install_scripts/readux.sh
 source $DIR/install_scripts/cleanup.sh
-
 
 # remove symlink
 sudo unlink /vagrant
