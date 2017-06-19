@@ -7,18 +7,18 @@ fedora-stack-prod
   git clone https://github.com/WSULib/fedora-stack.git
   cd fedora-stack
 
-  # create local configuration file from template
-  mv ./config/envvars.default ./config/envvars
+  # select build profile from envvars.dataslice, envvars.workdev, envvars.public, or envvars.local and create local configuration file from template
+  # e.g. mv ./config/envvars.workdev ./config/envvars
 
-  # edit configuration (development is default; edit/uncomment in envvars to use production settings)
-    # set host
+  # edit configuration
+    # check host
     # VM name
     # SSL cert file name
     # VM IP address
-    # passwords for system
+    # credentials for fedora
   vim ./config/envvars
 
-    # populate sensitive information, /downloads
+    # populate sensitive information, /downloads, and modify Vagrantfile
   ./prebuild.sh
   
   # finally, fire up VM
