@@ -21,3 +21,6 @@ git clone -b $DOWNLOADS_GIT_BUILD_BRANCH https://github.com/WSULib/fedora-stack-
 cp Vagrantfile.template Vagrantfile
 sed -i '.delete' "s/BUILD_PROFILE/$BUILD_PROFILE/g" Vagrantfile
 sed -i '.delete' "s/VM_IP/$VM_IP/g" Vagrantfile
+rm *.delete
+
+printf "\n\nPrebuild complete!  Remember, please do not add/commit the newly created Vagrantfile (extensionless).\n\n"
