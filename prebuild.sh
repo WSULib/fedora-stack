@@ -18,5 +18,5 @@ printf "\n\nChecking out branch: $DOWNLOADS_GIT_BUILD_BRANCH for fedora-stack-do
 git clone -b $DOWNLOADS_GIT_BUILD_BRANCH https://github.com/WSULib/fedora-stack-downloads.git downloads
 
 # sed Vagrant file with information from envvars
-sed -i "s/BUILD_PROFILE/$BUILD_PROFILE/g" ./Vagrantfile
-sed -i "s/VM_IP/$VM_IP/g" ./Vagrantfile
+sed -i '.original' "s/BUILD_PROFILE/$BUILD_PROFILE/g" Vagrantfile
+sed -i '.original' "s/VM_IP/$VM_IP/g" Vagrantfile

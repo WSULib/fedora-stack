@@ -28,7 +28,7 @@ FRONT_END_API_PREFIX='api'
 FRONT_END_GIT_BUILD_BRANCH='v2'
 
 # Sensitive information, aka /downloads directory
-DOWNLOADS_GIT_BUILD_BRANCH='v2'
+DOWNLOADS_GIT_BUILD_BRANCH='v2buildprofiles'
 
 # SQL
 SQL_PASSWORD='mybadpassword'
