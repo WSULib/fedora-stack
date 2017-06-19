@@ -195,7 +195,7 @@ echo "deactivating virtualenv"
 
 # set cron job for autoindexing
 printf "setting autoindexing cron job: $OUROBOROS_SCHEDULED_INDEXING"
-sudo -u ouroboros -H sh -c '(crontab -l 2>/dev/null; echo "$OUROBOROS_SCHEDULED_INDEXING") | crontab -'
+crontab -l | { cat; echo "$OUROBOROS_SCHEDULED_INDEXING"; } | crontab -
 
 
 
