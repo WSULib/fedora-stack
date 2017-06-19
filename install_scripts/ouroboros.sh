@@ -72,12 +72,15 @@ pip install -r requirements.txt
 # redis
 apt-get -y install redis-server
 
-# copy ouroboros's localConfig and replace host info
+# copy ouroboros's localConfig and sed values
 cp $SHARED_DIR/downloads/ouroboros/localConfig.py /opt/ouroboros/localConfig.py
 sed -i "s/APP_HOST_PLACEHOLDER/$VM_HOST/g" /opt/ouroboros/localConfig.py
 sed -i "s/OUROBOROS_API_PREFIX/$OUROBOROS_API_PREFIX/g" /opt/ouroboros/localConfig.py
 sed -i "s/OUROBOROS_FEDCONSUMER_FIRE/$OUROBOROS_FEDCONSUMER_FIRE/g" /opt/ouroboros/localConfig.py
 sed -i "s/OUROBOROS_REPOSITORY_NAME/$OUROBOROS_REPOSITORY_NAME/g" /opt/ouroboros/localConfig.py
+sed -i "s/REMOTE_FEDORA_HOST/$REMOTE_FEDORA_HOST/g" /opt/ouroboros/localConfig.py
+sed -i "s/REMOTE_FEDORA_USERNAME/$REMOTE_FEDORA_USERNAME/g" /opt/ouroboros/localConfig.py
+sed -i "s/REMOTE_FEDORA_PASSWORD/$REMOTE_FEDORA_PASSWORD/g" /opt/ouroboros/localConfig.py
 
 cd /opt
 

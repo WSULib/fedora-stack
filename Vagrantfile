@@ -6,17 +6,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
   
-  config.vm.hostname = "fedora-stack-REPLACE_WITH_BUILD_PROFILE"
+  config.vm.hostname = "fedora-stack-BUILD_PROFILE"
 
   config.vm.box = "bento/ubuntu-16.04"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = 6144 
+    vb.memory = 6144
     vb.cpus = 2
-    config.vm.network "private_network", ip: "X.X.X.X"
-    config.vm.network :forwarded_port, guest: 80, host: 4570
-    config.vm.network :forwarded_port, guest: 443, host: 4571
-    config.ssh.forward_x11 = true
+    config.vm.network "private_network", ip: "VM_IP"
+    #config.vm.network :forwarded_port, guest: 80, host: 4570
+    #config.vm.network :forwarded_port, guest: 443, host: 4571
+    #config.ssh.forward_x11 = true
     # vb.gui = true
   end
 
