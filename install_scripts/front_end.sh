@@ -67,6 +67,8 @@ sed -i "s/FRONT_END_API_PREFIX/$FRONT_END_API_PREFIX/g" /var/www/wsuls/digitalco
 cp $SHARED_DIR/downloads/front_end/eTextReader/sensitive.php /var/www/wsuls/eTextReader/php
 sed -i "s/FEDORA_ADMIN_USERNAME/$FEDORA_ADMIN_USERNAME/g" /var/www/wsuls/eTextReader/php/sensitive.php
 sed -i "s/FEDORA_ADMIN_PASSWORD/$FEDORA_ADMIN_PASSWORD/g" /var/www/wsuls/eTextReader/php/sensitive.php
+# create db for eTextReader table interface
+mysql --user=root --password=$SQL_PASSWORD < $SHARED_DIR/downloads/front_end/eTextReader/image_capture.sql
 
 # chown
 chown -R www-data:admin /var/www/wsuls/eTextReader
