@@ -41,7 +41,11 @@ source /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv auth
 workon auth
 
-# clone readux repository
+# create logging directory
+mkdir /var/log/wsudorauth
+chown -R ouroboros:admin /var/log/wsudorauth
+
+# clone wsudorauth repository
 cd /opt
 git clone https://github.com/WSULib/wsudorauth.git
 cd wsudorauth
