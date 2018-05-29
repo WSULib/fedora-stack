@@ -88,8 +88,8 @@ deactivate
 cp $SHARED_DIR/downloads/loris/loris-http_cache_clean.sh /var/lib/loris/bin/loris-http_cache_clean.sh
 cp $SHARED_DIR/downloads/loris/loris-cache_clean.sh /var/lib/loris/bin/loris-cache_clean.sh
 printf "setting cache clean cronjobs"
-sudo -u loris -H sh -c '(crontab -l 2>/dev/null; echo "*/1 * * * * /var/lib/loris/bin/loris-http_cache_clean.sh") | crontab -'
-sudo -u loris -H sh -c '(crontab -l 2>/dev/null; echo "*/1 * * * * /var/lib/loris/bin/loris-cache_clean.sh") | crontab -'
+sudo -u loris -H sh -c '(crontab -l 2>/dev/null; echo "0 * * * * /var/lib/loris/bin/loris-http_cache_clean.sh") | crontab -'
+sudo -u loris -H sh -c '(crontab -l 2>/dev/null; echo "0 * * * * /var/lib/loris/bin/loris-cache_clean.sh") | crontab -'
 
 # chown dirs
 chown -R loris:admin /var/lib/loris
